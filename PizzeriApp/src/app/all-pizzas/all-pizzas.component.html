@@ -1,0 +1,33 @@
+<h1>Menú de pizzas</h1>
+
+
+<p *ngIf="!(allPizzas$ | async)"><em></em></p>
+<p>
+  <a [routerLink]="['/add']" class="btn btn-primary float-right mb-3">Agregar pizza</a>
+</p>
+
+
+<table class="table table-sm table-hover" *ngIf="(allPizzas$ | async)?.length>0">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Imagen</th>
+      <th>Precio</th>
+      <th>Ingredientes</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pizza of (allPizzas$ | async)">
+      <td>{{ pizza.PizzaId }}</td>
+      <td><a [routerLink]="['/pizza/', pizza.PizzaId]">{{ pizza.Nombre }}</a></td>
+      <td>{{ pizza.Imagen }}</td>
+      <td>{{ pizza.Precio }}</td>
+      <td>{{ pizza.Ingredientes }}</td>
+      <td><a [routerLink]="['/pizza/edit/', pizza.PizzaId]" class="btn btn-primary btn-sm float-right">Editar</a></td>
+      <td><a [routerLink]="" (click)="delete(pizza.PizzaId)" class="btn btn-danger btn-sm float-right">Eliminar</a></td>
+    </tr>
+  </tbody>
+</table>

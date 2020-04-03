@@ -1,0 +1,36 @@
+<h1>{{actionType}} Pizza</h1><br>
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+  <div class="form-group row">
+    <div class="col-md-12">
+        <textarea class="form-control" rows="3" formControlName="Nombre" placeholder="Nombre de pizza"></textarea>
+    </div>
+    <span class="text-danger ml-3" *ngIf="Nombre.invalid && formDir.submitted">
+      Nombre es requerido.
+    </span>
+  </div>
+  <div class="form-group row" style="position: relative; float: right; width: 50%;">
+    <div class="col-md-12">
+      <label class="control-label" for="Ingredientes">Ingredientes</label>
+      <textarea class="form-control" rows="10" formControlName="Ingredientes"></textarea>
+    </div>
+    <span class="text-danger ml-3" *ngIf="Ingredientes.invalid && formDir.submitted">
+        Ingredientes es requerido.
+    </span>
+    <div class="col-md-12">
+        <br><label class="control-label" for="Precio">Precio</label>
+        <textarea class="form-control" rows="2" formControlName="Precio"></textarea>
+      </div>
+      <span class="text-danger ml-3" *ngIf="Precio.invalid && formDir.submitted">
+        Precio es requerido.
+      </span>
+    <div class="form-group" style="width: 98%;">
+        <br><button type="submit" class="btn btn-success" style="width: 40%;">Guardar</button>
+        <button class="btn btn-secondary" (click)="cancel()" style="width: 40%; position: relative; float: right;">Cancelar</button>
+    </div>
+  </div>
+  <div class="form-group row" style="width: 50%;">
+      <div class="col-md-12">
+        <textarea class="form-control" rows="16" formControlName="Imagen" placeholder="Imagen"></textarea>
+      </div>
+  </div>
+</form>
