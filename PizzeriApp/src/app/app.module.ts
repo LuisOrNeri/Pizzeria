@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AllPizzasComponent } from './all-pizzas/all-pizzas.component';
 import { EditPizzaComponent } from './edit-pizza/edit-pizza.component';
 import { PizzaService } from './services/pizza.service';
+import { ImageService } from './services/image.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PizzaService } from './services/pizza.service';
     ReactiveFormsModule,
   ],
   providers: [
-    PizzaService
+    PizzaService,
+    ImageService
   ],
   bootstrap: [AppComponent]
 })

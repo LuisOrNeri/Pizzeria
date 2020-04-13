@@ -22,10 +22,10 @@ allPizzas$: Observable<Pizza[]>;
     this.allPizzas$ = this.pizzaService.getPizzas();
   }
 
-  delete(PizzaId) {
-    const ans = confirm('Quieres borrar la pizza con el id: '+PizzaId+' ?');
+  delete(pizzaId) {
+    const ans = confirm('Quieres borrar la pizza con el id: '+pizzaId+' ?');
     if(ans) {
-      this.pizzaService.deletePizza(PizzaId).subscribe((data) => {
+      this.pizzaService.deletePizza(pizzaId).subscribe((data) => {
         this.loadPizzas();
       });
     }

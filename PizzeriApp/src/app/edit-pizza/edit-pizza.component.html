@@ -2,25 +2,25 @@
 <form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
   <div class="form-group row">
     <div class="col-md-12">
-        <textarea class="form-control" rows="3" formControlName="Nombre" placeholder="Nombre de pizza"></textarea>
+        <textarea class="form-control" rows="3" formControlName="name" placeholder="Nombre de pizza"></textarea>
     </div>
-    <span class="text-danger ml-3" *ngIf="Nombre.invalid && formDir.submitted">
+    <span class="text-danger ml-3" *ngIf="name.invalid && formDir.submitted">
       Nombre es requerido.
     </span>
   </div>
   <div class="form-group row" style="position: relative; float: right; width: 50%;">
     <div class="col-md-12">
-      <label class="control-label" for="Ingredientes">Ingredientes</label>
-      <textarea class="form-control" rows="10" formControlName="Ingredientes"></textarea>
+      <label class="control-label" for="ingredients">Ingredientes</label>
+      <textarea class="form-control" rows="10" formControlName="ingredients"></textarea>
     </div>
-    <span class="text-danger ml-3" *ngIf="Ingredientes.invalid && formDir.submitted">
+    <span class="text-danger ml-3" *ngIf="ingredients.invalid && formDir.submitted">
         Ingredientes es requerido.
     </span>
     <div class="col-md-12">
-        <br><label class="control-label" for="Precio">Precio</label>
-        <textarea class="form-control" rows="2" formControlName="Precio"></textarea>
+        <br><label class="control-label" for="price">Precio</label>
+        <input class="form-control" rows="2" formControlName="price" type="number">
       </div>
-      <span class="text-danger ml-3" *ngIf="Precio.invalid && formDir.submitted">
+      <span class="text-danger ml-3" *ngIf="price.invalid && formDir.submitted">
         Precio es requerido.
       </span>
     <div class="form-group" style="width: 98%;">
@@ -30,7 +30,57 @@
   </div>
   <div class="form-group row" style="width: 50%;">
       <div class="col-md-12">
-        <textarea class="form-control" rows="16" formControlName="Imagen" placeholder="Imagen"></textarea>
+        <textarea class="form-control" rows="16" formControlName="image" placeholder="Imagen"></textarea>
       </div>
   </div>
+
+
+  <label class="image-upload-container btn btn-bwm">
+    <span>Seleccionar imagen</span>
+    <input #imageInput
+           type="file"
+           accept="image/*"
+           (change)="processFile(imageInput)">
+  </label>
+  
+  
+  <!--<div *ngIf="selectedFile" class="img-preview-container">
+  
+    <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
+         [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+    </div>
+  
+    <div *ngIf="selectedFile.pending" class="img-loading-overlay">
+      <div class="img-spinning-circle"></div>
+    </div>
+  
+    <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> Image Uploaded Succesfuly!</div>
+    <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Image Upload Failed!</div>
+  </div>-->
+
+  <div *ngIf="selectedFile" class='img-preview-container'>
+
+    <div class='img-preview'
+  
+         [ngStyle]="{'background-image': 'url(' + selectedFile.src + ')'}">
+  
+    </div>
+  
+  
+  
+    <div *ngIf="selectedFile.pending" class='img-loading-overlay'>
+  
+      <div class='img-spinning-circle'></div>
+  
+    </div>
+  
+  
+  
+    <div *ngIf="selectedFile.status === 'ok'" class='alert alert-success'> Image Uploaded Sucesfuly! </div>
+  
+    <div *ngIf="selectedFile.status === 'fail'" class='alert alert-danger'> Image Upload Failed </div>
+  
+  </div>
+
+
 </form>

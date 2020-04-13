@@ -28,7 +28,7 @@ namespace pizzeria.Controllers
         [HttpGet]
         public IEnumerable<Pizza> GetPizza()
         {
-            return _context.Pizza.OrderByDescending(p => p.PizzaId);
+            return _context.Pizza.OrderBy(p => p.PizzaId);
         }
 
         // GET: api/Pizzas/5

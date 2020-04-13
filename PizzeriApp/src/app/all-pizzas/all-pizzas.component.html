@@ -21,13 +21,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let pizza of (allPizzas$ | async)">
-      <td>{{ pizza.PizzaId }}</td>
-      <td><a [routerLink]="['/pizza/', pizza.PizzaId]">{{ pizza.Nombre }}</a></td>
-      <td>{{ pizza.Imagen }}</td>
-      <td>{{ pizza.Precio }}</td>
-      <td>{{ pizza.Ingredientes }}</td>
-      <td><a [routerLink]="['/pizza/edit/', pizza.PizzaId]" class="btn btn-primary btn-sm float-right">Editar</a></td>
-      <td><a [routerLink]="" (click)="delete(pizza.PizzaId)" class="btn btn-danger btn-sm float-right">Eliminar</a></td>
+      <td>{{ pizza.pizzaId }}</td>
+      <td><a [routerLink]="['/pizza/', pizza.pizzaId]">{{ pizza.name }}</a></td>
+      <td>{{ pizza.image }}</td>
+      <td>{{ pizza.price }}</td>
+      <td>{{ pizza.ingredients }}</td>
+      <td><a [routerLink]="['/pizza/edit/', pizza.pizzaId]" class="btn btn-primary btn-sm float-right">Editar</a></td>
+      <td><a [routerLink]="" (click)="delete(pizza.pizzaId)" class="btn btn-danger btn-sm float-right">Eliminar</a></td>
     </tr>
   </tbody>
 </table>

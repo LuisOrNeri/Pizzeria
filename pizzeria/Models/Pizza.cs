@@ -13,14 +13,14 @@ namespace pizzeria.Models
         public int PizzaId { get; set; }
 
         [Required]
-        public string Nombre { get; set; }
+        public string Name { get; set; }
 
-        public string Imagen { get; set; }
-
-        [Required]
-        public float Precio { get; set; }
+        public string Image { get; set; }
 
         [Required]
-        public string Ingredientes { get; set; }
+        public decimal Price { get; set; }
+
+        [Required]
+        public string Ingredients { get; set; }
     }
 }

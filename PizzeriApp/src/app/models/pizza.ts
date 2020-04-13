@@ -1,7 +1,7 @@
 export class Pizza {
-    PizzaId?: number;
-    Nombre: string;
-    Imagen: string;
-    Precio: number;
-    Ingredientes: string;
+    pizzaId?: number;
+    name: string;
+    image: string;
+    price: number;
+    ingredients: string;
   }

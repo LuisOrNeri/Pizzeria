@@ -30,8 +30,8 @@ export class PizzaService {
     );
   }
 
-  getPizza(PizzaId: number): Observable<Pizza> {
-    return this.http.get<Pizza>(this.myAppUrl + this.myApiUrl + PizzaId)
+  getPizza(pizzaId: number): Observable<Pizza> {
+    return this.http.get<Pizza>(this.myAppUrl + this.myApiUrl + pizzaId)
     .pipe(
       retry(1),
       catchError(this.errorHandler)
@@ -46,16 +46,16 @@ export class PizzaService {
     );
   }
 
-  updatePizza(PizzaId: number, pizza): Observable<Pizza> {
-    return this.http.put<Pizza>(this.myAppUrl + this.myApiUrl + PizzaId, JSON.stringify(pizza), this.httpOptions)
+  updatePizza(pizzaId: number, pizza): Observable<Pizza> {
+    return this.http.put<Pizza>(this.myAppUrl + this.myApiUrl + pizzaId, JSON.stringify(pizza), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.errorHandler)
     );
   }
 
-  deletePizza(PizzaId: number): Observable<Pizza> {
-    return this.http.delete<Pizza>(this.myAppUrl + this.myApiUrl + PizzaId)
+  deletePizza(pizzaId: number): Observable<Pizza> {
+    return this.http.delete<Pizza>(this.myAppUrl + this.myApiUrl + pizzaId)
     .pipe(
       retry(1),
       catchError(this.errorHandler)
