@@ -1,2 +1,2 @@
-#This will be the git ignore
-\bin\*
+# Ignore bin folder
+bin
