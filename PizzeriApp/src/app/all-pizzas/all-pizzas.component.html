@@ -22,7 +22,7 @@
   <tbody>
     <tr *ngFor="let pizza of (allPizzas$ | async)">
       <td>{{ pizza.pizzaId }}</td>
-      <td><a [routerLink]="['/pizza/', pizza.pizzaId]">{{ pizza.name }}</a></td>
+      <td><a [routerLink]="['/pizza/edit/', pizza.pizzaId]">{{ pizza.name }}</a></td>
       <td>{{ pizza.image }}</td>
       <td>{{ pizza.price }}</td>
       <td>{{ pizza.ingredients }}</td>

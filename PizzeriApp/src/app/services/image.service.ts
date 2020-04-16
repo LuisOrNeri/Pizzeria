@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEventType } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { retry, catchError } from 'rxjs/operators';
 import {map} from 'rxjs/operators';
@@ -12,42 +12,26 @@ export class ImageService {
 
   myAppUrl: string;
   myApiUrl: string;
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8'
-    })
-  };
+  public message: string;
 
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.appUrl;
-    this.myApiUrl = 'api/Pizzas/';
+    this.myApiUrl = 'api/Pizzas/nothing';
   }
 
 
-  public uploadImage(image: File): Observable<string | any> {
+  public uploadImage(image: File): string {
     const formData = new FormData();
 
-    formData.append('image', image);
+    formData.append('image', image, image.name);
 
-    return this.http.post(this.myAppUrl + this.myApiUrl, JSON.stringify(image), this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.errorHandler)
-    );
+    this.http.post(this.myAppUrl + this.myApiUrl, formData, {observe: 'events'})
+      .subscribe(event => {
+        if (event.type === HttpEventType.Response) {
+          this.message = 'Ok.';
+        }
+      });
+      return this.message;
 
-   // return this.http.post('https://localhost:44363/add', formData).pipe(map(((json: any) => json.imageUrl)));
   }
-
-  errorHandler(error) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
-    } else {
-      // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    console.log(errorMessage);
-    return throwError(errorMessage);
-    }
 }

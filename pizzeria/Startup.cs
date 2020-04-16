@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using pizzeria.Data;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Http;
 
 namespace pizzeria
 {
@@ -78,7 +81,11 @@ namespace pizzeria
 
             app.UseHttpsRedirection();
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Image")),
+                RequestPath = new PathString("/Image")
+            });
 
             app.UseSpaStaticFiles();
 
