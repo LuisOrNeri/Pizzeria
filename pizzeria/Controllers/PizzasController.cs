@@ -106,27 +106,38 @@ namespace pizzeria.Controllers
             return CreatedAtAction("GetPizza", new { id = pizza.PizzaId }, pizza);
         }
 
-        [HttpPost("{nothing}")]
-        public IActionResult Upload([FromRoute] String nothing)
+        [HttpPost("{upimage}")]
+        public IActionResult Upload([FromRoute] String upimage)
         {
             try
             {
                 var file = Request.Form.Files[0];
                 var folderName = Path.Combine("Image");
+                var folderName2 = Path.Combine("uploads");
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                string newPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\"));
+                var newPath2 = Path.Combine(newPath, "PizzeriApp", "src", "assets", "img");
+                var pathToSave2 = Path.Combine(newPath2, folderName2);
 
                 if (file.Length > 0)
                 {
                     var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                     var fullPath = Path.Combine(pathToSave, fileName);
+                    var fullPath2 = Path.Combine(pathToSave2, fileName);
                     var dbPath = Path.Combine(folderName, fileName);
+                    var dbPath2 = Path.Combine(folderName2, fileName);
 
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
                     }
 
-                    return Ok(new { dbPath });
+                    using (var stream2 = new FileStream(fullPath2, FileMode.Create))
+                    {
+                        file.CopyTo(stream2);
+                    }
+
+                    return Ok(new { dbPath, dbPath2 });
                 }
                 else
                 {

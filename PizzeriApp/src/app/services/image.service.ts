@@ -16,7 +16,7 @@ export class ImageService {
 
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.appUrl;
-    this.myApiUrl = 'api/Pizzas/nothing';
+    this.myApiUrl = 'api/Pizzas/upimage/';
   }
 
 
@@ -34,4 +34,5 @@ export class ImageService {
       return this.message;
 
   }
+  
 }

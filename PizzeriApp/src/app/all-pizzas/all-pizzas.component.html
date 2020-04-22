@@ -7,7 +7,7 @@
 </p>
 
 
-<table class="table table-sm table-hover" *ngIf="(allPizzas$ | async)?.length>0">
+<!--<table class="table table-sm table-hover" *ngIf="(allPizzas$ | async)?.length>0">
   <thead>
     <tr>
       <th>#</th>
@@ -31,3 +31,37 @@
     </tr>
   </tbody>
 </table>
+<br><br>
+<table class="table table-sm table-hover" *ngIf="arrPizzas.length>0">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Imagen</th>
+      <th>Precio</th>
+      <th>Ingredientes</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pizza of arrPizzas">
+      <td>{{ pizza.pizzaId }}</td>
+      <td><a [routerLink]="['/pizza/edit/', pizza.pizzaId]">{{ pizza.name }}</a></td>
+      <td><img [src]="pizza.image" style="width:500px; height:400px;"></td>
+      <td>{{ pizza.price }}</td>
+      <td>{{ pizza.ingredients }}</td>
+      <td><a [routerLink]="['/pizza/edit/', pizza.pizzaId]" class="btn btn-primary btn-sm float-right">Editar</a></td>
+      <td><a [routerLink]="" (click)="delete(pizza.pizzaId)" class="btn btn-danger btn-sm float-right">Eliminar</a></td>
+    </tr>
+  </tbody>
+</table>-->
+<br><br>
+<div style="overflow-x:auto; background-color:white; white-space:nowrap;">
+  <div *ngFor="let pizza of arrPizzas" style="display: inline-block; width: 275px; font-size:larger;" align='center'>
+    <img [src]="pizza.image" style="width:250px; height:200px;" [routerLink]="['/pizza/edit/', pizza.pizzaId]"><br>
+    <p [routerLink]="['/pizza/edit/', pizza.pizzaId]">{{ pizza.name }}</p>
+    <p [routerLink]="['/pizza/edit/', pizza.pizzaId]">$ {{ pizza.price }}</p>
+    <a [routerLink]="" (click)="delete(pizza.name, pizza.pizzaId)" class="btn btn-danger btn-sm">Eliminar</a>
+  </div>
+</div>

@@ -32,8 +32,9 @@
       <div class="col-md-12">
         <label for="img">
           <img [src]="imageBase" style="width:500px; height:400px;">
+          <p style="position: absolute; top: 250px; font-size:xx-large; left: 120px;" *ngIf="flag == true">Seleccionar imagen</p>
         </label>
-        <input type="file" (change)="handleFileInput($event.target.files)" style="display: none;" id="img" name="img" accept="image/*">
+        <input type="file" (change)="handleFileInput($event.target.files)" style="display: none;" id="img" formControlName="image" accept="image/*">
       </div>
   </div>
 </form>
