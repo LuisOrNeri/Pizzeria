@@ -83,8 +83,8 @@ namespace pizzeria
 
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Image")),
-                RequestPath = new PathString("/Image")
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Images")),
+                RequestPath = new PathString("/Images")
             });
 
             app.UseSpaStaticFiles();

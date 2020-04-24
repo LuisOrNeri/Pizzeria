@@ -21,7 +21,7 @@ export class EditPizzaComponent implements OnInit {
   pizzaId: number;
   errorMessage: any;
   existingPizza: Pizza;
-  imageBase: string = "/assets/img/uploads/default-image.jpg";
+  imageBase: string = "Images/default-image.jpg";
   fileToUpload: File = null;
   message: string;
   nameOfImage: string;
@@ -67,7 +67,7 @@ export class EditPizzaComponent implements OnInit {
   isItNull(imgname: string): string{
     if(imgname != null){
       this.flag = false;
-      return '/assets/img/uploads/'+imgname;
+      return 'Images/'+imgname;
     }
     else{
       this.flag = true;

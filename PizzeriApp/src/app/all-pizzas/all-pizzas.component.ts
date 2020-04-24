@@ -25,10 +25,10 @@ arrPizzas: Pizza[];
     this.allPizzas$.forEach((Obs) => {
       Obs.forEach((pizza) => {
         if(pizza.image != null){
-          pizza.image = '/assets/img/uploads/'+pizza.image;
+          pizza.image = 'Images/'+pizza.image;
         }
         else{
-          pizza.image = '/assets/img/uploads/default-image.jpg';
+          pizza.image = 'Images/default-image.jpg';
         }
         this.arrPizzas.push(pizza);
       })
